@@ -16,6 +16,7 @@ const getOrder = async (req, res, next) => {
     const order = await Order.findById(req.params.id)
       .populate("user", "-password -isAdmin -_id -__v -createdAt -updatedAt")
       .orFail();
+    console.log(order);
     res.send(order);
   } catch (err) {
     next(err);
